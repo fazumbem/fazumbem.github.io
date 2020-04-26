@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Instituição</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@next/css/ionic.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <style>
+        :root {
+            --ion-safe-area-top: 20px;
+            --ion-safe-area-bottom: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <ion-app>
+        <ion-header [translucent]="true">
+            <ion-toolbar color="primary">
+                <ion-title>
+                    Cadastro de entidade
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content fullscreen class="ion-padding">
+            <form id="cadastrarInstituicaoForm" action="http://127.0.0.1:5000/entidade" method="post">
+            <ion-item>
+                <ion-label position="floating">Nome</ion-label>
+                <ion-input name="nome" type="text" inputmode="text" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input name="email" type="email" inputmode="email" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Senha</ion-label>
+                <ion-input name="inst_password" type="password" maxlength="30" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Telefone</ion-label>
+                <ion-input name="telefone" type="tel" inputmode="tel" maxlength="11" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Site da Instituição</ion-label>
+                <ion-input name="site" type="url" inputmode="url" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">CNPJ ou CPF</ion-label>
+                <ion-input name="cnpj_cpf" type="text" inputmode="numeric" minlength="11" maxlength="14" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Descrição</ion-label>
+                <ion-input name="descricao" type="text" inputmode="text" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Endereço</ion-label>
+                <ion-input name="endereco" type="text" inputmode="text" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Cidade</ion-label>
+                <ion-input name="cidade" type="text" inputmode="text" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">CEP</ion-label>
+                <ion-input name="cep" type="text" inputmode="numeric" minlength="8" maxlength="8" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Local de Atuação (Bairro(s))</ion-label>
+                <ion-input name="local_atuacao" type="text" inputmode="text" required="true"></ion-input>
+            </ion-item>
+            <ion-button type="submit">Cadastrar Instituição</ion-button>
+        </form>
+        </ion-content>
+    </ion-app>
+    <script type="text/javascript" src="main.js"></script>
+</body>

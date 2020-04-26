@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de ação</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@next/css/ionic.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <style>
+        :root {
+            --ion-safe-area-top: 20px;
+            --ion-safe-area-bottom: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <ion-app>
+        <ion-header [translucent]="true">
+            <ion-toolbar color="primary">
+                <ion-title>
+                    Cadastro de ação
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content fullscreen class="ion-padding">
+            <form id="cadastrarAcaoForm">
+                <ion-item>
+                    <ion-label position="floating">Entidade ID</ion-label>
+                    <ion-input id="entidade_id" type="numeric" inputmode="numeric" required="true"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Nome</ion-label>
+                    <ion-input id="nome_acao" type="text" inputmode="text" required="true"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input id="imagem-input" type="file" name="imagem_acao" accept=".jpg,.png"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">URL</ion-label>
+                    <ion-input id="url_acao" type="url" inputmode="url"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Descrição</ion-label>
+                    <ion-input id="descricao" type="text" inputmode="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Contato</ion-label>
+                    <ion-input id="contato" type="text" inputmode="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Tipo Ajuda</ion-label>
+                    <ion-select id="tipo_ajuda" placeholder="Selecione" interface="popover">
+                        <ion-select-option value="RECEBE">Recebe</ion-select-option>
+                        <ion-select-option value="FORNECE">Fornece</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Forma Ajuda</ion-label>
+                    <ion-select id="forma_ajuda" placeholder="Selecione" interface="popover">
+                        <ion-select-option value="DINHEIRO">Dinheiro</ion-select-option>
+                        <ion-select-option value="MATERIAL">Material</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Forma Verificação</ion-label>
+                    <ion-input id="forma_verificacao" type="text" inputmode="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Responsável Verificação</ion-label>
+                    <ion-input id="resp_verificacao" type="text" inputmode="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Ativa</ion-label>
+                    <ion-toggle id="ativa" slot="start" value="ativa"></ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Permanente</ion-label>
+                    <ion-toggle id="permanente" slot="start" value="permanente"></ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Validade</ion-label>
+                    <ion-input id="validade" type="text" inputmode="text"></ion-input>
+                </ion-item>
+
+                <ion-button onclick="postEntidade()">Cadastrar Entidade</ion-button>
+            </form>
+        </ion-content>
+    </ion-app>
+    <script>
+        let input = document.getElementById('imagem-input');
+        var image_file = null;
+        input.onchange = function (e) {
+            image_file = e.target.files[0];
+        }
+        function postEntidade() {
+            let params = new FormData();
+            let entidade_id = document.getElementById('entidade_id').value;
+            let nome_acao = document.getElementById('nome_acao').value;
+            let url_acao = document.getElementById('url_acao').value;
+            let descricao = document.getElementById('descricao').value;
+            let contato = document.getElementById('contato').value;
+            let tipo_ajuda = document.getElementById('tipo_ajuda').value;
+            let forma_ajuda = document.getElementById('forma_ajuda').value;
+            let forma_verificacao = document.getElementById('forma_verificacao').value;
+            let resp_verificacao = document.getElementById('resp_verificacao').value;
+            let ativa = document.getElementById('ativa').value;
+            let permanente = document.getElementById('permanente').value;
+            let validade = document.getElementById('validade').value;
+            if (entidade_id) {
+                params.append('entidade_id', entidade_id);
+            }
+            if (nome_acao) {
+                params.append('nome_acao', nome_acao);
+            }
+            if (url_acao) {
+                params.append('url_acao', url_acao);
+            }
+            if (descricao) {
+                params.append('descricao', descricao);
+            }
+            if (contato) {
+                params.append('contato', contato);
+            }
+            if (tipo_ajuda) {
+                params.append('tipo_ajuda', tipo_ajuda);
+            }
+            if (forma_ajuda) {
+                params.append('forma_ajuda', forma_ajuda);
+            }
+            if (forma_verificacao) {
+                params.append('forma_verificacao', forma_verificacao);
+            }
+            if (resp_verificacao) {
+                params.append('resp_verificacao', resp_verificacao);
+            }
+            if (ativa) {
+                params.append('ativa', ativa === 'ativa');
+            }
+            if (permanente) {
+                params.append('permanente', permanente === 'permanente');
+            }
+            if (validade) {
+                params.append('nome', validade);
+            }
+            if(image_file){
+                params.append('imagem_acao', image_file);
+            }
+            fetch('https://fazumbem.herokuapp.com/acao', { method: 'POST', mode: "cors", body: params });
+        }
+    </script>
+</body>

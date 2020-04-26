@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Instituição</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@next/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@next/css/ionic.bundle.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <style>
+        :root {
+            --ion-safe-area-top: 20px;
+            --ion-safe-area-bottom: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <ion-app>
+        <ion-header [translucent]="true">
+            <ion-toolbar color="primary">
+                <ion-title>
+                    Cadastro de entidade
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content fullscreen class="ion-padding">
+            <form id="cadastrarInstituicaoForm">
+            <ion-item>
+                <ion-label position="floating">Nome</ion-label>
+                <ion-input id="nome" type="text" inputmode="text" required="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Tipo Pessoa</ion-label>
+                <ion-select id="tipo_pessoa" placeholder="Selecione" interface="popover">
+                    <ion-select-option value="PF">Pessoa Física</ion-select-option>
+                    <ion-select-option value="PJ">Pessoa Jurídica</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">URL</ion-label>
+                <ion-input id="url_entidade" type="url" inputmode="url"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Descrição</ion-label>
+                <ion-input id="descricao" type="text" inputmode="text"></ion-input>
+            </ion-item>
+            <ion-button onclick="postEntidade()">Cadastrar Entidade</ion-button>
+        </form>
+        </ion-content>
+    </ion-app>
+    <script>
+        function postEntidade(){
+            let params = new URLSearchParams();
+            let nome = document.getElementById('nome').value;
+            let tipo_pessoa = document.getElementById('tipo_pessoa').value;
+            let url_entidade = document.getElementById('url_entidade').value;
+            let descricao = document.getElementById('descricao').value;
+            if(nome){
+                params.append('nome', nome);
+            }
+            if(tipo_pessoa){
+                params.append('tipo_pessoa', tipo_pessoa);
+            }
+            if(url_entidade){
+                params.append('url_entidade', url_entidade);
+            }
+            if(descricao){
+                params.append('descricao', descricao);
+            }
+            fetch('https://fazumbem.herokuapp.com/entidade', {method:'POST', mode:"cors", body:params});
+        }
+    </script>
+</body>
