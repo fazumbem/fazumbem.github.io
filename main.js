@@ -81,8 +81,8 @@ async function loadCampanhas() {
                 <div>
                     <p>Instituição promotora</p>
                     <p class="instituicao-nome">${acao.nome_entidade}</p>
-                    <p>Benefeciado:</p>
-                    <button class="button-doar">Doar</button>
+                    <p>Beneficiado:</p>
+                    <button class="button-vermais">Ver +</button>
                 </div>
             </div>`
         }
