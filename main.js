@@ -1,5 +1,6 @@
 loadCampanhas();
 loadInstituicoes();
+loadMap();
 
 document.getElementById('side-menu-button').addEventListener('click', showSideMenu);
 document.getElementById('menu-close-button').addEventListener('click', hideSideMenu);
@@ -122,4 +123,25 @@ async function loadInstituicoes() {
     } catch(e) {
         console.log(e);
     }
+}
+
+function loadMap(){
+    var map = L.map('map').setView([-29.688196, -53.812421], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmVsaXBlbWFyaW4iLCJhIjoiY2s5ajM2MzY4MDBwcjNtcHVnZjBhM2hiYiJ9.zQ-vU2StF9PScFnzd6vT3w', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiZmVsaXBlbWFyaW4iLCJhIjoiY2s5ajM2MzY4MDBwcjNtcHVnZjBhM2hiYiJ9.zQ-vU2StF9PScFnzd6vT3w'
+    }).addTo(map);
+    var campanhaIcon = L.icon({
+        iconUrl: 'images/map-marker-campanha.png',
+        iconSize:     [30, 39], // size of the icon
+        iconAnchor:   [15, 39], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    var marker = L.marker([-29.688196, -53.812421], {icon: campanhaIcon}).addTo(map);
+    var marker = L.marker([-29.698296, -53.833421], {icon: campanhaIcon}).addTo(map);
+    var marker = L.marker([-29.689196, -53.861421], {icon: campanhaIcon}).addTo(map);
 }
