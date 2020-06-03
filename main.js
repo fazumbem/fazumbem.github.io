@@ -1,7 +1,19 @@
+//variáveis
+var campanhas =  null;
+var instituicoes = null;
+var campanhaIcon = L.icon({
+    iconUrl: 'images/map-marker-campanha.png',
+    iconSize:     [30, 39], // size of the icon
+    iconAnchor:   [15, 39], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+//chamada das funções que carregam o conteúdo da página
+map = loadMap();
 loadCampanhas();
 loadInstituicoes();
-loadMap();
 
+//menu lateral
 document.getElementById('side-menu-button').addEventListener('click', showSideMenu);
 document.getElementById('menu-close-button').addEventListener('click', hideSideMenu);
 
@@ -13,55 +25,49 @@ function hideSideMenu() {
     document.getElementById('side-menu').style.width = '0px';
 }
 
-function showModal() {
+//modal
+function showModal(i) {
+    let acao = acoes[i];
 	let modalHtml = `
-		<div id="modal-background" class="modal-background modal-hide">
 			<div id="modal" class="modal">
                 <a class="close-button modal-hide"></a>
                 <div class="modal-content">
                     <div class="modal-content-header">
-                        <h1>Fabricação de Máscaras</h1>
-                        <p>Curso de moda do senai</p>
-                        <p>Beneficiado</p>
-                        <p>Local da Ação:</p>
+                        <h1>${acao.nome_acao}</h1>
+                        <p>${acao.nome_entidade}</p>
+                        <!--img src="images/acoes/${acao.imagem_acao}"></img-->
                         <img src="images/campanha_lauduz.jpg"></img>
-                        <p>Foto reprodução</p>
+                        <p>Local da Ação:</p>
                     </div>
-                    <div class="modal-content-card">
-                        <h1 style="background-color: #2e343b">Como a ação vai ajudar?</h1>
-                        <p>Texto de como a ação vai ajudar</p>
-                    </div>
-                    <div class="modal-content-card">
-                        <h1 style="background-color: #a2cca7">Como ajudar?</h1>
-                        <p>As doações podem ser entregues no Lar(Avenida Hélvio Basso, 1250, Bairro Duque de Caxias) ou em dinheiro</p>
-                    </div>
-                    <div class="modal-content-card">
-                        <h1 style="background-color: #ec2950">O que doar?</h1>
-                        <p>Com álcool gel e álcool para limpeza, fraldas geriátricas (G, GG e EG), papel higiênico, máscaras e luvas, 
-                        água sanitária, de desinfetante e detergente, shampoo, condicionador, repelente, sabão em pó e desodorante roll on e alimentos
-                        não perecíveis, como leite integral ou sem lactose, farinha de trigo, bolachas doces e salgadas, aveia, vinagre, arroz,
-                        macarrão, feijão, açúcar, café em pó e gelatina.
-                        </p>
-                    </div>
-                    <div class="modal-content-card">
-                        <h1 style="background-color: #f6b064">Links úteis</h1>
-                        <p>XYZ</p>
-                    </div>
+                    ${acao.descricao ?
+                        `<div class="modal-content-card">
+                            <h1 style="background-color: #2e343b">Descrição</h1>
+                            <p>${acao.descricao}</p>
+                        </div>` : ''
+                    }
+                    ${acao.contato ?
+                        `<div class="modal-content-card">
+                            <h1 style="background-color: #a2cca7">Contato</h1>
+                            <p>${acao.contato}</p>
+                        </div>` : ''
+                    }
                 </div>
-			</div>
-		</div>`
-    document.body.innerHTML += modalHtml;
-    document.getElementById('modal-background').addEventListener('click', e => {
-        hideModal(e);
-    });
+			</div>`
+    let divModal = document.createElement('div');
+    divModal.id = 'modal-background';
+    divModal.className = 'modal-background modal-hide';
+    divModal.innerHTML = modalHtml;
+    divModal.onclick = function(e){hideModal(e, divModal)};
+    document.body.appendChild(divModal);
 }
 
-function hideModal(e) {
+function hideModal(e, modal) {
     if(e.target.classList.contains('modal-hide')){
-	    let modal = document.getElementById('modal-background');
         document.body.removeChild(modal);
     }
 }
+
+//funções que carregam o conteúdo da página
 
 async function loadCampanhas() {
     const url = 'https://fazumbem.herokuapp.com/acao?tipo_request=all';
@@ -72,20 +78,28 @@ async function loadCampanhas() {
     try {   
         const acoes_json = await fetch(url, options);
         const acoes_response = await acoes_json.json();
-        const acoes = acoes_response['data'];
+        acoes = acoes_response['data'];
+
         let grid = document.getElementById('grid-campanha');
         let html = '';
-        for (acao of acoes) {
+        for (const [i, acao] of acoes.entries()) {
             html += 
-            `<div class="card-campanha" onclick="showModal()">
+            `<div class="card-campanha">
+                <!--img src="images/acoes/${acao.imagem_acao}" /-->
                 <img src="./images/campanha_lauduz.jpg" />
                 <div>
                     <p>Instituição promotora</p>
                     <p class="instituicao-nome">${acao.nome_entidade}</p>
-                    <p>Beneficiado:</p>
-                    <button class="button-vermais">Ver +</button>
+                    <button class="button-vermais" onclick="showModal(${i})">Ver +</button>
                 </div>
             </div>`
+            for(localizacao of acao.localizacoes){
+                if(localizacao.latitude && localizacao.longitude){
+                    let marker = new L.marker([Number(localizacao.latitude), Number(localizacao.longitude)], {icon: campanhaIcon, title: acao.nome_acao})
+                    .on('click', function(e){showModal(i)})
+                    .addTo(map);
+                }
+            }
         }
         grid.innerHTML = html;
     } catch(e) {
@@ -135,13 +149,5 @@ function loadMap(){
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiZmVsaXBlbWFyaW4iLCJhIjoiY2s5ajM2MzY4MDBwcjNtcHVnZjBhM2hiYiJ9.zQ-vU2StF9PScFnzd6vT3w'
     }).addTo(map);
-    var campanhaIcon = L.icon({
-        iconUrl: 'images/map-marker-campanha.png',
-        iconSize:     [30, 39], // size of the icon
-        iconAnchor:   [15, 39], // point of the icon which will correspond to marker's location
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-    });
-    var marker = L.marker([-29.688196, -53.812421], {icon: campanhaIcon}).addTo(map);
-    var marker = L.marker([-29.698296, -53.833421], {icon: campanhaIcon}).addTo(map);
-    var marker = L.marker([-29.689196, -53.861421], {icon: campanhaIcon}).addTo(map);
+    return map;
 }
