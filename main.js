@@ -70,7 +70,8 @@ function hideModal(e, modal) {
 //funções que carregam o conteúdo da página
 
 async function loadCampanhas() {
-    const url = 'https://fazumbem.herokuapp.com/acao?tipo_request=all';
+//    const url = 'https://fazumbem.herokuapp.com/acao?tipo_request=all';
+    const url = 'http://100.26.254.241/acao?tipo_request=all';
     const options = {
         method: 'GET',
         mode: 'cors'
@@ -108,7 +109,8 @@ async function loadCampanhas() {
 }
 
 async function loadInstituicoes() {
-    const url = 'https://fazumbem.herokuapp.com/entidade?tipo_request=all';
+//    const url = 'https://fazumbem.herokuapp.com/entidade?tipo_request=all';
+    const url = 'http://100.26.254.241/entidade?tipo_request=all';
     const options = {
         method: 'GET',
         mode: 'cors'
