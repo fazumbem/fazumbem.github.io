@@ -31,13 +31,13 @@ function showModal(i) {
 	let modalHtml = `
 			<div id="modal" class="modal">
                 <a class="close-button modal-hide"></a>
-                <div class="modal-content">
+                <div id="modal-content" class="modal-content">
                     <div class="modal-content-header">
                         <h1>${acao.nome_acao}</h1>
                         <p>${acao.nome_entidade}</p>
                         <!--img src="images/acoes/${acao.imagem_acao}"></img-->
                         <img src="images/campanha_lauduz.jpg"></img>
-                        <p>Local da Ação:</p>
+                        <!--p>Local da Ação:</p-->
                     </div>
                     ${acao.descricao ?
                         `<div class="modal-content-card">
@@ -59,6 +59,16 @@ function showModal(i) {
     divModal.innerHTML = modalHtml;
     divModal.onclick = function(e){hideModal(e, divModal)};
     document.body.appendChild(divModal);
+    if(window.innerWidth > 900){
+        let modal = document.getElementById('modal-content');
+        let height = 0;
+        for(let child of modal.children){
+            console.log(child.offsetHeight);
+            height += child.offsetHeight + 40;
+        }
+        console.log('height: ' + height + ' modal offset: ' + modal.offsetHeight);
+        modal.parentElement.style.width = String(parseInt(height / modal.offsetHeight + 1) * 360) + 'px';
+    }
 }
 
 function hideModal(e, modal) {
@@ -149,7 +159,7 @@ function loadMap(){
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoiZmVsaXBlbWFyaW4iLCJhIjoiY2s5ajM2MzY4MDBwcjNtcHVnZjBhM2hiYiJ9.zQ-vU2StF9PScFnzd6vT3w'
+        accessToken: 'pk.pk.eyJ1IjoiZmVsaXBlbWFyaW4iLCJhIjoiY2s5ajM2MzY4MDBwcjNtcHVnZjBhM2hiYiJ9.zQ-vU2StF9PScFnzd6vT3w'
     }).addTo(map);
     return map;
 }
