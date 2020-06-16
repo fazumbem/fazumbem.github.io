@@ -96,8 +96,7 @@ async function loadCampanhas() {
         for (const [i, acao] of acoes.entries()) {
             html += 
             `<div class="card-campanha">
-                <!--img src="images/acoes/${acao.imagem_acao}" /-->
-                <img src="./images/campanha_lauduz.jpg" />
+                <img src="images/acoes/${acao.imagem_acao}" />
                 <div>
                     <p>Instituição promotora</p>
                     <p class="instituicao-nome">${acao.nome_entidade}</p>
