@@ -94,9 +94,25 @@ async function loadCampanhas() {
         let grid = document.getElementById('grid-campanha');
         let html = '';
         for (const [i, acao] of acoes.entries()) {
+            // <div class="card-campanha-titulo">Nome de campanha</div>
+            // <div class="card-campanha-filter"></div>
+            let nome_acao_pretty = acao.nome_acao;
+            if(acao.nome_acao.length > 80){
+                nome_acao_pretty = acao.nome_acao.slice(0, 80);
+                nome_acao_pretty = nome_acao_pretty + "...";
+            }
+            
             html += 
             `<div class="card-campanha">
-                <img src="images/acoes/${acao.imagem_acao}" />
+                <img class="card-campanha-img" src="images/acoes/${acao.imagem_acao}" />
+                <div class="card-campanha-filter"></div>
+                <div class="card-campanha-risco"></div>
+                <p class="card-campanha-titulo">${nome_acao_pretty}</p>
+                <img class="card-campanha-folhapequena" src="images/folha_pequena.svg" >
+                <img class="card-campanha-cabopequeno" src="images/cabo_pequeno.svg" >
+                <img class="card-campanha-folhagrande" src="images/folha_grande.svg" >
+                <img class="card-campanha-cabogrande" src="images/cabo_grande.svg" >
+                
                 <div>
                     <p>Instituição promotora</p>
                     <p class="instituicao-nome">${acao.nome_entidade}</p>

@@ -244,13 +244,114 @@ body {
     border-radius: 8px;
     background-color: rgb(245, 245, 245);
     padding: 20px;
+    position: relative;
 }
 
-.card-campanha img {
+.card-campanha-img {
     object-fit: cover;
     border-radius: 8px;
     width: 320px;
-    max-height: 300px;
+    height: 300px;
+    /* Add the blur effect */
+    /* filter: blur(4px); */
+    /* -webkit-filter: blur(4px); */
+    /* background: darkblue; */
+    /* opacity: .7; */
+    z-index: 0;
+}
+
+.card-campanha-filter {
+    /* object-fit: cover; */
+    top: 20px;
+    border-radius: 8px;
+    /* width: 320px; */
+    /* max-height: 300px; */
+    position: absolute;
+    width: 320px;
+    height: 300px;
+    background: #284870;
+    opacity: .7;
+    z-index: 1;
+}
+
+.card-campanha-titulo {
+    position: absolute;
+    color: #fff;
+    left: 30%;
+    top: 3%;
+    right: 15%;
+    font-size: 30px;
+    font-weight: 500;
+    z-index: 2;
+    /* background: #ffff; */
+    /* text-transform: uppercase; */
+    text-align: left;
+    
+}
+
+.card-campanha-risco {
+    /* object-fit: cover; */
+    top: 6%;
+    /* right: 4%; */
+    left: 25%;
+    /* border-radius: 8px; */
+    /* width: 320px; */
+    /* max-height: 300px; */
+    position: absolute;
+    width: 7px;
+    height: 270px;
+    background: #fff;
+    /* opacity: .80; */
+    z-index: 2;
+}
+
+.card-campanha-folhapequena {
+    position: absolute;
+    color: #ffffff;
+    width: 21px;
+    height: 33px;
+    /* object-fit: cover; */
+    top: 230px;
+    /* right: 4%; */
+    left: 38px;
+    z-index: 2;
+}
+
+.card-campanha-cabopequeno {
+    position: absolute;
+    color: #ffffff;
+    width: 7px;
+    height: 22px;
+    /* object-fit: cover; */
+    top: 248px;
+    /* right: 4%; */
+    left: 41px;
+    z-index: 2;
+}
+
+
+.card-campanha-folhagrande {
+    position: absolute;
+    color: #ffffff;
+    width: 36px;
+    height: 35px;
+    /* object-fit: cover; */
+    top: 245px;
+    /* right: 4%; */
+    left: 45px;
+    z-index: 2;
+}
+
+.card-campanha-cabogrande {
+    position: absolute;
+    color: #ffffff;
+    width: 27px;
+    height: 18px;
+    /* object-fit: cover; */
+    top: 262px;
+    /* right: 4%; */
+    left: 37px;
+    z-index: 2;
 }
 
 .card-campanha>div {
