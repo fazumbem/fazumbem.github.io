@@ -29,6 +29,7 @@ body {
     font-size: large;
     font-weight:300;
     text-decoration: none;
+
 }
 
 .header-page-buttons {
@@ -259,8 +260,8 @@ body {
 .grid-campanha {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 8%;
+    margin-right: 8%;
     margin-bottom: 40px;
     
 }
@@ -670,24 +671,25 @@ conteudo-2>p{
     height: 3px;
     background: #2E343B;
     opacity: 1;
-    margin-top:40%;
+    margin-top:43%;
 }
 
 .wrappersobre{
     display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    margin-left:15%;
-    margin-top: 3%;
+    grid-template-columns: 20% 24% 20% 24%;
+    margin-left:10%;
     align-items: center;
 }
 
 .coluna{
-    margin-top:20%;
+    margin-top:10%;
     margin-right:20%;
     margin-left: 5%;
+    padding-bottom: 5%;
+
 }
 .coluna1{
-    margin-top:40%;
+    margin-top:25%;
 }
 
 .icones_sobre{
@@ -827,8 +829,8 @@ conteudo-2>p{
     border-radius: 15px;
     opacity: 1;
     z-index:3;
-    margin-top: 25%;
-    margin-left: 45%;
+    margin-top: 15%;
+    margin-left: 55%;
     float: left;
 }
 
@@ -845,9 +847,8 @@ conteudo-2>p{
 
 .formulario{
     width: 80%;
-    margin-top: 5%;
+    margin-top: 10%;
     float:right;
-    padding: 3%;
 }
 
 .campo{
@@ -855,11 +856,11 @@ conteudo-2>p{
     letter-spacing: 0px;
     color: #2E343B;
     opacity: 1;
-    padding: 1%;
+    padding: 0.5%;
 }
 
 .imput{
-    width: 80%;
+    width: 70%;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     border: 2px solid var(--unnamed-color-2e343b);
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -870,6 +871,7 @@ conteudo-2>p{
     padding-left: 10px;
     margin:1%;
     font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.4em;
     
 }
@@ -877,6 +879,7 @@ conteudo-2>p{
 .formulario>p{
     text-align: left;
     font-size: 0.7rem;
+     margin-top: 0;
 }
 
 .button-enviar{
@@ -897,5 +900,23 @@ conteudo-2>p{
     font-weight: 200;
     text-transform: uppercase;
     float:  right;
-    margin-right: 18%;
+    margin-right: 25%;
+    margin-top: -20px;
+
 }
+
+
+.rect_fundo{
+    top: 7400px;
+    margin-left:-15%;
+    width: 1850px;
+    height: 1850px;
+    background: #ECECEC 0% 0% no-repeat padding-box;
+    transform: rotate(45deg);
+    border-radius: 15px;
+    opacity: 1;
+    content:'';
+    position:absolute;
+    display: block;
+    z-index: -10;
+    }
