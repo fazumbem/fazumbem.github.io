@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin="" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+   
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
@@ -28,7 +32,7 @@
         </div>
         <div class="header-page-buttons-mobile">
             <a id="side-menu-button" class="icon-menu"></a>
-            <a class="icon-busca"></a>
+            <a class="ativo 21"></a>
         </div>
     </div>
 
@@ -42,16 +46,16 @@
     </div>
 
     <div class="titulo">
-        <img class="marca" src="./images/marca.png"></img>
-        <p>famílias em situação de vulnerabilidade precisam da sua ajuda!</p>
-        <img class="marca" src="./images/UFSM_principal_cor.png"></img>
+    <img class="marca" src="./images/marca.png">
+    <p>famílias em situação <br> de <span class="span_titulo"> vulnerabilidade</span> <br>precisam da <span class="span_titulo"> sua ajuda!</span><br> CONFIRA TAMBÉM QUEM JÁ ESTÁ FAZENDO UM BEM!</p> 
     </div>
+
     <div class="content">
         <div id="map"></div>
         <div id="section-campanhas">
             <div class="header-section">
-                <h1>campanhas ativas</h1>
-                <p>Veja como você pode contribuir para fazer muita diferença em suas Vidas.</p>
+                <h1>campanhas de arrecadação</h1>
+                <p>Veja como você pode contribuir para fazer muita diferença em suas VIDAS.</p>
             </div>
 
             <div id="grid-campanha" class="grid-campanha"></div>
@@ -64,15 +68,25 @@
             <div id="grid-instituicoes" class="grid-instituicoes"></div>
         </div>
         <div class="center">
+            
+            
             <div class="section-sobre" id="section-sobre">
-                <div class="header-section">
+                <div class="header-sectionsobre">
                     <h1>sobre</h1>
                     <p>#todosmerecemviver #todavidaimporta #vocêfazadiferença</p>
                 </div>
-                <div id="grid-sobre" class="grid-sobre">
-                    <div class="card-sobre">
-                        <h1 style="background-color: #2e343b">Nosso Porquê</h1>
-                        <p>Esse vírus nos pegou de jeito, para todos está sendo difícil ficar em casa, ter uma rotina
+                    
+                    <div class="linha_sobre"> </div>
+                    
+                <div id="grid_sobre">
+                        <div class="conteudo-1">
+                            <div class="rect">
+                            <img class="icones_sobrepq" src="./images/icones/nossopq.svg">
+                            <h1>Nosso <br> Porquê</h1>
+                             </div>
+                            </div>
+                    <div class="conteudo-2">
+                        <p >Esse vírus nos pegou de jeito, para todos está sendo difícil ficar em casa, ter uma rotina
                             diferente,
                             acordar e dormir sem sair para respirar um ar puro, ir ao shopping ou sair para se divertir.
                             Está
@@ -92,10 +106,14 @@
                             campanhas são
                             lançadas aleatoriamente e nem sabemos ao certo como ajudar.
                         </p>
-                        <p>Essa plataforma de ações solidárias tem o intuito de reunir o maior número possível de
+                        
+                        </div>
+                    
+                    <div class="conteudo-2-2">
+                        <span class="spanbloco">Essa plataforma de ações solidárias tem o intuito de reunir o maior número possível de
                             campanhas de arrecadação
                             e entidades de Santa Maria e Região para facilitar a você escolher a quem doar.
-                        </p>
+                        </span>
                         <p>A ideia nasceu no contexto da UFSM, sendo uma iniciativa da professora Andrea Schwertner
                             Charão (CT),
                             apoiada pela professora Débora Aita Gasparetto (DI/CAL) e pela assistente social (Tiane)
@@ -104,10 +122,19 @@
                             pessoas envolvidas em
                             apoiar e divulgar a proposta.
                         </p>
+                        </div>
                     </div>
-                    <div class="card-sobre">
-                        <h1 style="background-color: #ec2950">Como funciona</h1>
-                        <p>A plataforma cadastra campanhas e instituições que possam fazer a diferença na vida de
+                    
+                     <div class="linha_sobre2"> </div>
+                    <div class="wrappersobre">
+                    <div class="coluna1">
+                    <div class="rect1">
+                      <img class="icones_sobre" src="./images/icones/comofunc.svg">
+                        <h1 class="h1colunas">Como funciona</h1>
+                       </div>
+                        </div>
+                    <div class="coluna">
+                        <p class="pcoluna">A plataforma cadastra campanhas e instituições que possam fazer a diferença na vida de
                             famílias e comunidas.
                             Você busca campanhas ou instituições e vê como pode ajudar. As ajudas funcionam diretamente
                             com os promotores
@@ -115,35 +142,93 @@
                             plataforma conectar doadores
                             e campanhas, tornando mais fácil a visualização e o acesso.
                         </p>
+                        </div>
+                    <div class="coluna1">
+                        <div class="rect2">
+                      <img class="icones_sobre" src="./images/icones/termosdeuso.svg">
+                        <h1 class="h1colunas" >Termos de Uso</h1>
+                           </div>
+                        </div>
+                        
+                        <div class="coluna">
+                        <p class="pcoluna">As instituições são responsáveis pelo conteúdo disponibilizado, assim como pela execução das
+                            doações.<br>
+                        <span class="spancoluna">
+                            <br>A plataforma não é responsável pela captação de recursos, nem pela entrega às instituições.</span>
                     </div>
-                    <div class="card-sobre">
-                        <h1 style="background-color: #a2cca7">Termos de Uso</h1>
-                        <p>As instituições são responsáveis pelo conteúdo disponibilizado, assim como pela execução das
+                    <div class="coluna">
+                        <div class="rect3">
+                     <img class="icones_sobre" src="./images/icones/cadastrar.svg">
+                        <h1 class="h1colunas">Como cadastrar</h1>
+                            </div>
+                        </div>
+                        
+                       <div class="coluna">
+                        <p class="pcoluna">As intituições são responsáveis pelo conteúdo disponibilizado, assim como pela execução das
                             doações.
                             A plataforma não é responsável pela captação de recursos, nem pela entrega às instituições.
                         </p>
                     </div>
-                    <div class="card-sobre">
-                        <h1 style="background-color: #f6b064">Como cadastrar</h1>
-                        <p>As intituições são responsáveis pelo conteúdo disponibilizado, assim como pela execução das
-                            doações.
-                            A plataforma não é responsável pela captação de recursos, nem pela entrega às instituições.
-                        </p>
-                    </div>
-                    <div class="card-sobre">
-                        <h1 style="background-color: #f7ce67">Como Apoiar</h1>
-                        <p>Para ser um apoiador, ajude a divulgar essa plataforma, para que chegue a um número enorme
+                        
+                        
+                    <div class="coluna">
+                        <div class="rect4">
+                      <img class="icones_sobre" src="./images/icones/comoapoiar.svg">
+                        <h1>Como Apoiar</h1>
+                     </div>
+                        </div>
+                          <div class="coluna">
+                        <p class="pcoluna">Para ser um apoiador, ajude a divulgar essa plataforma, para que chegue a um número enorme
                             de pessoas que possam fazer a diferença. Entre em contato pelo email: XYZ? E saiba mais.
                         </p>
                     </div>
-                    <div class="card-sobre">
-                        <h1 style="background-color: #2e343b">contato</h1>
-                        <p>XYZZZ</p>
-                    </div>
+                        </div>
+
+                     <div class="linha_sobre3"> </div>
+
+                    <div class="contato">
+                     <div class="rect5">
+                   <img class="icones_sobre" src="./images/icones/contato.svg">
+                        <h1>contato</h1>
+                        </div>
+                        
+                        <form class="formulario" action="#" method="post">
+                                <div class="campo">
+                                    <label for="nome">Nome*</label>
+                                    <br>
+                                    <input class="imput" type="text" id="nome" name="nome" value="">
+                                </div>
+                            <div class="campo">
+                                <label for="telefone">Telefone*</label>
+                                <br>
+                                <input class="imput"  type="text" id="telefone" name="telefone"  value="">
+                            </div>
+                            <div class="campo">
+                                <label for="email">E-mail*</label>
+                                <br>
+                                <input class="imput" type="text" id="email" name="email" value="">
+                            </div>
+
+                            <div class="campo">
+                                <label for="mensagem">Mensagem*</label>
+                                <br>
+                                <textarea class="imput" rows="5"  id="mensagem" name="mensagem"></textarea>
+                            </div>
+                            <p> (Todos os campos* são obrigatórios)</p>
+
+                            <button class="button-enviar"type="submit" name="submit">Enviar</button>
+                    </form>
+
+                        
+                        
+                         <div class="rect_fundo"> </div>
+
+                        </div>
                 </div>
             </div>
-        </div>
-    </div>
+                                    </div>
+
 
     <script type="text/javascript" src="main.js"></script>
 </body>
+</html>
