@@ -18,7 +18,7 @@ document.getElementById('side-menu-button').addEventListener('click', showSideMe
 document.getElementById('menu-close-button').addEventListener('click', hideSideMenu);
 
 function showSideMenu() {
-    document.getElementById('side-menu').style.width = '200px';
+    document.getElementById('side-menu').style.width = '250px';
 }
 
 function hideSideMenu() {
