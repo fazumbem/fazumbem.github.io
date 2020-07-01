@@ -40,15 +40,15 @@ function showModal(i) {
                         <!--p>Local da Ação:</p-->
                     </div>
                     ${acao.descricao ?
-                        `<div class="modal-content-card">
-                            <h1 style="background-color: #2e343b">Descrição</h1>
-                            <p>${acao.descricao}</p>
+                        `<div class="modal-content-card1">
+                            <h1>Descrição</h1>
+                            <p class="pdescricao">${acao.descricao}</p>
                         </div>` : ''
                     }
                     ${acao.contato ?
-                        `<div class="modal-content-card">
-                            <h1 style="background-color: #a2cca7">Contato</h1>
-                            <p>${acao.contato}</p>
+                        `<div class="modal-content-card2">
+                            <h1>Contato</h1>
+                            <p class="pcontato">${acao.contato}</p>
                         </div>` : ''
                     }
                 </div>
