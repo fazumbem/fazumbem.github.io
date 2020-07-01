@@ -195,6 +195,8 @@ html, body {
     color: #284870;
     text-align: left;
     padding: 3%;
+    position: absolute;
+
 }
 
 .modal-content-header>h1{
@@ -253,6 +255,7 @@ html, body {
     width: 50%;
     background-color: #A1CCA5;
     padding-bottom: 5%;
+    position: absolute;
 
 }
 
@@ -277,6 +280,8 @@ html, body {
     background-color: #F5F5F5;
     padding: 2% 2% 25 2T%;
     padding-bottom: 5%;
+    position: absolute;
+
 
 }
 
