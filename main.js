@@ -146,6 +146,8 @@ async function loadInstituicoes() {
         const entidades = entidades_response['data'];
         let grid = document.getElementById('grid-instituicoes');
         let html = '';
+
+        let id_entidade = 1;
         for (entidade of entidades) {
             let nome_entidade = entidade.nome;
             if(nome_entidade.length > 40){
@@ -155,10 +157,11 @@ async function loadInstituicoes() {
             }
             html += 
             `<div class="card-instituicao">
-                <img src="./images/campanha_lauduz.jpg"/>
+                <img src="./images/logos/${id_entidade}.png"/>
                 <p>${nome_entidade}</p>
                 <p>Santa Maria</p>
             </div>`
+            id_entidade = id_entidade + 1;
         }
         grid.innerHTML = html;
     } catch(e) {
