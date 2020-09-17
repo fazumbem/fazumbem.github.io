@@ -104,7 +104,7 @@ async function loadCampanhas() {
             
             html += 
             `<div class="card-campanha">
-                <img class="card-campanha-img" src="images/acoes/${acao.imagem_acao}" />
+                <img class="card-campanha-img" src="images/entidades/${i+1}.png" />
                 <div class="card-campanha-filter"></div>
                 <div class="card-campanha-risco"></div>
                 <p class="card-campanha-titulo">${nome_acao_pretty}</p>
