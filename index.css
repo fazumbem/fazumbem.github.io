@@ -1497,7 +1497,7 @@ conteudo-2>p{
     background: #ECECEC 0% 0% no-repeat padding-box;
     transform: rotate(45deg);
     border-radius: 15px;
-    opacity: 1;
+    opacity: 0;
     content:'';
     position:absolute;
     display: block;
